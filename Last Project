@@ -1,0 +1,90 @@
+// 3
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+vector<string> convertToInfixArray(string expression){
+    vector<string> infixArray;
+    string operand = "";
+    
+    for(char c : expression){
+        if(isdigit(c)){
+            operand += c;
+        } else{
+            if(!operand.empty()){
+                infixArray.push_back(operand);
+                operand = "";
+            }
+            infixArray.push_back(string(1,c));
+        }
+    }
+    if(!operand.empty()){
+        infixArray.push_back(operand);
+    }
+    
+    return infixArray;
+}
+
+// 4
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<string> convertToInfixArray(string exp){
+    vector<string> infixArray;
+    int n = exp.length();
+    
+    for(int i = 0; i < n; i++){
+        if(exp[i] == ' '){
+            continue;
+        } else if(exp[i] >= '0' && exp[i] <= '9'){
+            string operand = "";
+            while(i < n && exp[i] >= '0' && exp[i] <= '9'){
+                operand += exp[i];
+                i++;
+            }
+            i--;
+            infixArray.push_back(operand);
+        } else{
+            infixArray.push_back(string(1, exp[i]));
+        }
+    }
+    return infixArray;
+}
+
+// 5
+
+// 6
+#include <iostream>
+using namespace std;
+
+bool isOperator(string str){
+    if(str.length() != 1){
+        return false;
+    }
+    if(str[0] == '+' || str[0] == '-' || str[0] == '*' || str[0] == '/'){
+        return true;
+    }
+    return false;
+}
+
+// 7
+#include <iostream>
+using namespace std;
+
+int getPrecedence(string a){
+    if(a == "*" || a == "/"){
+        return 2;
+    }
+    else if(a == "+" || a == "-"){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+// 8
+
+// 9
