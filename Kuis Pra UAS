@@ -1,0 +1,165 @@
+// 1
+struct Mahasiswa{
+    string nama;
+    double ipk;
+};
+
+//2
+struct Mahasiswa {
+    string nama;
+    double ipk;
+};
+
+struct Node {
+    Mahasiswa mhs;
+    Node* next;
+};
+
+//3
+void MyList::tambahBelakang(int databaru){
+    Node *baru;
+    baru = new Node;
+    baru->data = databaru;
+    baru->next = NULL;
+    
+    if (isEmpty()){
+        head = baru;
+    }else{
+        Node *bantu = head;
+        while (bantu->next != NULL){
+            bantu = bantu->next;
+        }
+        bantu->next = baru;
+    }    
+}
+
+//4
+void MyList::tambahBelakang(int databaru){
+    Node *baru;
+    baru = new Node;
+    baru->data = databaru;
+    baru->next = NULL;
+    
+    if (isEmpty()){
+        head = baru;
+    }else{
+        Node *bantu = head;
+        while (bantu->next != NULL){
+            bantu = bantu->next;
+        }
+        bantu->next = baru;
+    }    
+}
+
+void MyList::hapusDepan(){
+    if(isEmpty()){
+        cout << "List kosong";
+        
+    }else{
+        Node *hapus = head;
+        head = head ->next;
+        delete hapus;
+    }
+}
+
+//5
+#include <iostream>
+using namespace std;
+
+void tukar(int&a, int&b, int&c){
+    if (a>= b){
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+    if (b>=c){
+        int temp = b;
+        b = c;
+        c = temp;
+    }
+    if (a>=b){
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+}
+
+//6
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+
+    vector<int> a(N), b(N), c(N);
+    for (int i = 0; i < N; i++) {
+        cin >> a[i] >> b[i] >> c[i];
+    }
+
+    vector<vector<int>> dp(N, vector<int>(3, 0));
+    dp[0][0] = a[0];
+    dp[0][1] = b[0];
+    dp[0][2] = c[0];
+
+    for (int i = 1; i < N; i++) {
+        dp[i][0] = a[i] + max(dp[i - 1][1], dp[i - 1][2]);
+        dp[i][1] = b[i] + max(dp[i - 1][0], dp[i - 1][2]);
+        dp[i][2] = c[i] + max(dp[i - 1][0], dp[i - 1][1]);
+    }
+
+    int maxPoints = max({dp[N - 1][0], dp[N - 1][1], dp[N - 1][2]});
+    cout << maxPoints << endl;
+
+    return 0;
+}
+
+//7
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+pair<int, int> binary_search(const vector<int>& arr, int target) {
+    int left = 0;
+    int right = arr.size() - 1;
+    int count = 0;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        count++;
+
+        if (arr[mid] == target) {
+            return make_pair(mid, count);
+        } else if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return make_pair(-1, count);
+}
+
+int main() {
+    int N;
+    cin >> N;
+
+    vector<int> A(N);
+    for (int i = 0; i < N; i++) {
+        cin >> A[i];
+    }
+
+    int X;
+    cin >> X;
+
+    pair<int, int> result = binary_search(A, X);
+    cout << result.first << " " << result.second << endl;
+
+    return 0;
+}
+
+
