@@ -1,10 +1,10 @@
-// 1
+// 2
 struct Mahasiswa{
     string nama;
     double ipk;
 };
 
-//2
+// 3
 struct Mahasiswa {
     string nama;
     double ipk;
@@ -15,7 +15,7 @@ struct Node {
     Node* next;
 };
 
-//3
+// 4
 void MyList::tambahBelakang(int databaru){
     Node *baru;
     baru = new Node;
@@ -24,7 +24,8 @@ void MyList::tambahBelakang(int databaru){
     
     if (isEmpty()){
         head = baru;
-    }else{
+    }
+    else{
         Node *bantu = head;
         while (bantu->next != NULL){
             bantu = bantu->next;
@@ -33,7 +34,7 @@ void MyList::tambahBelakang(int databaru){
     }    
 }
 
-//4
+// 5
 void MyList::tambahBelakang(int databaru){
     Node *baru;
     baru = new Node;
@@ -42,7 +43,8 @@ void MyList::tambahBelakang(int databaru){
     
     if (isEmpty()){
         head = baru;
-    }else{
+    }
+    else{
         Node *bantu = head;
         while (bantu->next != NULL){
             bantu = bantu->next;
@@ -54,15 +56,15 @@ void MyList::tambahBelakang(int databaru){
 void MyList::hapusDepan(){
     if(isEmpty()){
         cout << "List kosong";
-        
-    }else{
+    }
+    else{
         Node *hapus = head;
         head = head ->next;
         delete hapus;
     }
 }
 
-//5
+// 6
 #include <iostream>
 using namespace std;
 
@@ -84,7 +86,7 @@ void tukar(int&a, int&b, int&c){
     }
 }
 
-//6
+// 7
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -117,7 +119,7 @@ int main() {
     return 0;
 }
 
-//7
+// 8
 #include <iostream>
 #include <vector>
 
@@ -161,5 +163,3 @@ int main() {
 
     return 0;
 }
-
-
